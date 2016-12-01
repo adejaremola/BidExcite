@@ -9,12 +9,12 @@ class CommentsTableSeeder extends Seeder {
        DB::table('comments')->truncate();
        $faker = Faker::create();
        $users = User::all()->lists('id');
-       $news = News::all()->lists('id');
+       $blogs = Blog::all()->lists('id');
        foreach(range(1, 30) as $index)
        {
            Comment::create([
                'user_id' => $faker->randomElement($users),
-               'news_id' => $faker->randomElement($news),
+               'blog_id' => $faker->randomElement($blogs),
                'content' => $faker->text,
            ]);
        }

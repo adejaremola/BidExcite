@@ -14,7 +14,7 @@
   </div>
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
-      {{ Form::model($news, array('method' => $method, 'url' => 'news/'.$news->id, 'files' => 'true', 'class' => 'form-horizontal')) }}
+      {{ Form::model($blog, array('method' => $method, 'url' => 'blogs/'.$blog->id, 'files' => 'true', 'class' => 'form-horizontal')) }}
         <div class="form-group">
           {{ Form::label('pic_url', 'Upload Picture', ['class' => 'control-label col-sm-2']) }}
           <div class="col-sm-10">

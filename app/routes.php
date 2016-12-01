@@ -71,17 +71,17 @@ Route::get('notifications', array('as' => 'notifs', 'uses' => 'NotificationContr
 
 
 
-//news routes
-Route::model('news', 'News');
+//blog routes
+Route::model('blog', 'Blog');
 
-Route::get('news', array('as' => 'news', 'uses' => 'NewsController@getAllNews'));
-Route::get('news/{news}', array('as' => 'a_news', 'uses' => 'NewsController@getANews'));
-Route::get('my_news/{id}', array('as' => 'my_news', 'uses' => 'NewsController@getMyNews'));
-Route::get('news/{news}/edit', array('as' => 'edit_news', 'before' => 'auth', 'uses' => 'NewsController@editNews'));
-Route::get('news/{news}/delete', array('as' => 'delete_news', 'before' => 'auth', 'uses' => 'NewsController@deleteNews'));
-Route::get('newz/create', array('as' => 'create_news', 'uses' => 'NewsController@makeNews'));
+Route::get('blog', array('as' => 'blogs', 'uses' => 'BlogController@getAllBlogs'));
+Route::get('blog/{blog}', array('as' => 'a_blog', 'uses' => 'BlogController@getABlog'));
+Route::get('my_blogs/{id}', array('as' => 'my_blogs', 'uses' => 'BlogController@getMyBlogs'));
+Route::get('blogs/{blog}/edit', array('as' => 'edit_blog', 'before' => 'auth', 'uses' => 'BlogController@editBlog'));
+Route::get('blogs/{blog}/delete', array('as' => 'delete_blog', 'before' => 'auth', 'uses' => 'BlogController@deleteBlog'));
+Route::get('blogs/create', array('as' => 'create_blog', 'uses' => 'BlogController@makeBlog'));
 
 
-Route::post('news', array('as' => 'news_created', 'uses' => 'NewsController@postCreateNews'));
-Route::put('news/{news}', array('as' => 'news_edited', 'uses' => 'NewsController@postEditNews'));
-Route::delete('news/{news}', array('as' => 'news_deleted', 'uses' => 'NewsController@postDeleteNews'));
+Route::post('blog', array('as' => 'blog_created', 'uses' => 'BlogController@postCreateBlog'));
+Route::put('blogs/{blog}', array('as' => 'blog_edited', 'uses' => 'BlogController@postEditBlog'));
+Route::delete('blogs/{blog}', array('as' => 'blog_deleted', 'uses' => 'BlogController@postDeleteBlog'));

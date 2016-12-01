@@ -5,7 +5,7 @@ use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableTrait;
 use Illuminate\Auth\Reminders\RemindableInterface;
 
-class News extends Eloquent implements UserInterface, RemindableInterface {
+class Blog extends Eloquent implements UserInterface, RemindableInterface {
 
 	use UserTrait, RemindableTrait;
 
@@ -30,7 +30,7 @@ class News extends Eloquent implements UserInterface, RemindableInterface {
 	//relationship with Comment model
 	public function getComments()
 	{
-		return $this->hasMany('Comment', 'news_id');
+		return $this->hasMany('Comment', 'blog_id');
 	}
 
 

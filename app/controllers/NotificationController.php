@@ -9,7 +9,7 @@ class NotificationController extends \BaseController {
 	 */
 	public function getNotifications($id)
 	{
-		//
+		
 	}
 
 

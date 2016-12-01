@@ -51,9 +51,9 @@
                 <li class="dropdown">
                     <a href="" class="dropdown-toggle" data-toggle="dropdown">Blog<i class="fa fa-angle-down"></i></a>
                     <ul class="dropdown-menu">
-                        <li><a href="{{ route('my_news', Auth::user()->id) }}">My Posts</a></li>
-                        <li><a href="{{ route('create_news') }}">New Post</a></li>
-                        <li><a href="{{ route('news') }}">All Posts</a></li>
+                        <li><a href="{{ route('my_blogs', Auth::user()->id) }}">My Posts</a></li>
+                        <li><a href="{{ route('create_blog') }}">New Post</a></li>
+                        <li><a href="{{ route('blogs') }}">All Posts</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -68,7 +68,7 @@
                 </li>
                 @else
                 <li><a href="{{ route('deals') }}">Deals</a></li>
-                <li><a href="{{ route('news') }}">Blog</a></li>
+                <li><a href="{{ route('blogs') }}">Blog</a></li>
                 <li><a data-toggle="modal" href="#signIn">Log In</a></li>
                 @endif                   
             </ul>
@@ -161,14 +161,14 @@
             </div>
             <div class="modal-body" style="padding:40px 50px;">
                 <h2 class="modal-title">Are You Sure You Want To Log Out?</h2>
-            {{ Form::open(array('route' => 'logout')) }}
+                {{ Form::open(array('route' => 'logout')) }}
                 <div class="form-group">
                     <button type="submit" class="btn btn-success">
                     <span class="glyphicon glyphicon-off"></span>
                         Log Out
                     </button>         
                 </div>
-            {{ Form::close() }}
+                {{ Form::close() }}
             </div>
         </div>
     </div>

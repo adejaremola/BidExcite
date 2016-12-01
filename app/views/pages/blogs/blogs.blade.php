@@ -18,18 +18,18 @@
         <dpxv class="row">
             <div class="col-md-8">
                 <div class="blog-item">
-                    <img class="img-responsive img-blog" src="{{ '/'.$a_news->pic_url }}" width="100%" alt="" />
+                    <img class="img-responsive img-blog" src="{{ $a_blog->pic_url }}" width="100%" alt="" />
                     <div class="row">  
                             <div class="col-xs-12 col-sm-2 text-center">
                                 <div class="entry-meta">
                                     <span id="publish_date">07  NOV</span>
-                                    <span><i class="fa fa-user"></i> <a href="#"> {{ $a_news->getUser->first_name.' '.$a_news->getUser->first_name}}</a></span>
-                                    <span><i class="fa fa-comment"></i> <a href="blog-item.html#comments">{{ count($a_news->getComments) }} Comments</a></span>
+                                    <span><i class="fa fa-user"></i> <a href="#"> {{ $a_blog->getUser->first_name.' '.$a_blog->getUser->first_name}}</a></span>
+                                    <span><i class="fa fa-comment"></i> <a href="blog-item.html#comments">{{ count($a_blog->getComments) }} Comments</a></span>
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-10 blog-content">
-                                <h2>{{ $a_news->title }}</h2>
-                                <p>{{ $a_news->content }}</p>
+                                <h2>{{ $a_blog->title }}</h2>
+                                <p>{{ $a_blog->content }}</p>
 
                                 <div class="post-tags">
                                     <strong>Tag:</strong> <a href="#">Cool</a> / <a href="#">Creative</a> / <a href="#">Dubttstep</a>
@@ -41,7 +41,7 @@
                     
                 <div class="media reply_section">
                     <div class="pull-left post_reply text-center">
-                            <a href="#"><img src="" class="img-circle" alt="{{ $a_news->getUser->first_name }}" /></a>
+                            <a href="#"><img src="" class="img-circle" alt="{{ $a_blog->getUser->first_name }}" /></a>
                             <ul>
                                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                                 <li><a href="#"><i class="fa fa-twitter"></i></a></li>
@@ -49,7 +49,7 @@
                             </ul>
                         </div>
                     <div class="media-body post_reply_content">
-                            <h3>{{ $a_news->getUser->first_name.' '.$a_news->getUser->first_name }}</h3>
+                            <h3>{{ $a_blog->getUser->first_name.' '.$a_blog->getUser->first_name }}</h3>
                             <p><strong>Web:</strong> <a href="http://www.shapebootstrap.net">www.sci.ng</a></p>
                         </div>
                 </div> 
@@ -57,20 +57,20 @@
                 <div id="contact-page clearfix">
                     <div class="status alert alert-success" style="display: none"></div>
                     <div class="message_heading">
-                        <h1 id="comments_title">{{Count($a_news->getComments)}} Comments</h1>
+                        <h1 id="comments_title">{{Count($a_blog->getComments)}} Comments</h1>
                     </div>
                     {{ Form::model($comment, array('method' => 'post', 'url' => 'comments/'.$comment->id, 'class' => 'form-horizontal')) }}
                         <div class="form-group">
                             <button type="submit" class="btn btn-default btn-danger"><span class="glyphicon glyphicon-off"></span>Comment</button>
                           <div class="col-sm-10">
                             {{ Form::text('content', '', ['id' => 'content', 'class' => 'form-control', 'required' => 'true']) }}
-                            {{ Form::number('news_id', $a_news->id, ['class' => 'sr-only form-control']) }}
+                            {{ Form::number('blog_id', $a_blog->id, ['class' => 'sr-only form-control']) }}
                           </div>
                         </div>
                     {{ Form::close() }} 
                     
                 </div><!--/#contact-page-->
-                @foreach($a_news->getComments->reverse() as $comment)
+                @foreach($a_blog->getComments->reverse() as $comment)
                 <div class="media comment_section">
                     <div class="media-body post_reply_comments">
                         <h3>{{ $comment->getUser->first_name }}</h3>
@@ -193,27 +193,27 @@
                         <div class="col-xs-12 col-sm-2 text-center">
                             <div class="entry-meta">
                                 <span id="publish_date">07  NOV</span>
-                                <span><i class="fa fa-user"></i> <a href="#">{{ $first_news->getUser->first_name.' '.$first_news->getUser->last_name }}</a></span>
-                                <span><i class="fa fa-comment"></i>{{ count($first_news->getComments) }} Comments</span>
+                                <span><i class="fa fa-user"></i> <a href="#">{{ $first_blog->getUser->first_name.' '.$first_blog->getUser->last_name }}</a></span>
+                                <span><i class="fa fa-comment"></i>{{ count($first_blog->getComments) }} Comments</span>
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-10 blog-content">
-                            <a href="#"><img class="img-responsive img-blog" src="{{ '/'.$first_news->pic_url }}" width="100%" alt="" /></a>
-                            <h2><a href="{{ route('a_news', $first_news->id) }}">{{ $first_news->title }}</a></h2>
-                            <h3>{{ $first_news->content }}</h3>
-                            <a class="btn btn-primary readmore" href="{{ route('a_news', $first_news->id) }}">Read More <i class="fa fa-angle-right"></i></a>
+                            <a href="#"><img class="img-responsive img-blog" src="{{ '/'.$first_blog->pic_url }}" width="100%" alt="" /></a>
+                            <h2><a href="{{ route('a_blog', $first_blog->id) }}">{{ $first_blog->title }}</a></h2>
+                            <h3>{{ $first_blog->content }}</h3>
+                            <a class="btn btn-primary readmore" href="{{ route('a_blog', $first_blog->id) }}">Read More <i class="fa fa-angle-right"></i></a>
                         </div>
                     </div>
                     @else 
                     <div class="row" style="margin-top: 15px;">
 		                <div class="features">
-                        @if(isset($other_news))
-		                	@foreach($other_news as $a_news)
+                        @if(isset($other_blogs))
+		                	@foreach($other_blogs as $a_blog)
 			                <div class="col-md-4 wow fadeInDown">
 			                    <div class="clients-comments text-center">
-			                        <img src="{{ '/'.$a_news->pic_url }}" class="img-circle" alt="">
-			                        <h3>{{ $a_news->title }}</h3>
-			                        <h4><span>-{{ $a_news->getUser->first_name }} /</span>  {{ $a_news->getUser->email }}</h4>
+			                        <img src="{{ '/'.$a_blog->pic_url }}" class="img-circle" alt="">
+			                        <h3>{{ $a_blog->title }}</h3>
+			                        <h4><span>-{{ $a_blog->getUser->first_name }} /</span>  {{ $a_blog->getUser->email }}</h4>
 			                    </div>
 			                </div>
 			                @endforeach

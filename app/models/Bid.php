@@ -17,7 +17,7 @@ class Bid extends Eloquent implements UserInterface, RemindableInterface {
 	 */
 	
 	protected $table = 'bids';
-	protected $fillable = array('user_id', 'item_id', 'price', 'accepted');
+	protected $fillable = array('user_id', 'deal_id', 'price', 'accepted');
  
 	public static $rules = 
 	[

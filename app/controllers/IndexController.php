@@ -7,11 +7,11 @@ public function getIndex()
 		$deals = Deal::take(3)
 					->orderBy('id')
 					->get();
-		$news = News::take(6)
+		$blogs = Blog::take(6)
 					->orderBy('updated_at', 'desc');
 		return View::make('pages.index')
 					->with('deals', $deals)
-					->with('news', $news);
+					->with('blogs', $blogs);
 	}
 
 }	

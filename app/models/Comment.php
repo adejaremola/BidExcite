@@ -17,7 +17,7 @@ class Comment extends Eloquent implements UserInterface, RemindableInterface {
 	 */
 	
 	protected $table = 'comments';
-	protected $fillable = array('user_id', 'news_id', 'content');
+	protected $fillable = array('user_id', 'blog_id', 'content');
  
 	public static $rules = array
 	(
@@ -33,6 +33,6 @@ class Comment extends Eloquent implements UserInterface, RemindableInterface {
 	//reverse relationship with News model (makeComment)
 	public function getNews()
 	{
-		return $this->belongsTo('News', 'news_id');
+		return $this->belongsTo('Blog', 'blog_id');
 	}
 }
