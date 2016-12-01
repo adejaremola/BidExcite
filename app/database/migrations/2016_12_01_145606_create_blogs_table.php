@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateNewsViewersTable extends Migration {
+class CreateBlogsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,12 +12,14 @@ class CreateNewsViewersTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('news_viewers', function(Blueprint $table)
+		Schema::create('blogs', function(Blueprint $table)
 		{
+			$table->increments('id');
 			$table->integer('user_id')->unsigned()->default(0);
-			$table->integer('news_id')->unsigned()->default(0);
 			$table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-			$table->foreign('news_id')->references('id')->on('news')->onDelete('cascade');			
+			$table->string('pic_url');
+			$table->string('title');
+			$table->binary('content');
 			$table->timestamps();
 		});
 	}
@@ -29,7 +31,7 @@ class CreateNewsViewersTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('news_viewers');
+		Schema::drop('blogs');
 	}
 
 }

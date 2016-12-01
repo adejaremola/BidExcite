@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateItemsTable extends Migration {
+class CreateDealsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,12 +12,16 @@ class CreateItemsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('items', function(Blueprint $table)
+		Schema::create('deals', function(Blueprint $table)
 		{
-			$table->integer('user_id')->unsigned()->default(0);
 			$table->increments('id');
-			$table->string('pic_url')->default('images/Dashboard.PNG');
+			$table->integer('user_id')->unsigned()->default(0);
 			$table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+			$table->string('pic_url');
+			$table->string('title');
+			$table->text('description');
+			$table->decimal('price');
+			$table->boolean('available')->default(1);
 			$table->timestamps();
 		});
 	}
@@ -29,7 +33,7 @@ class CreateItemsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('items');
+		Schema::drop('deals');
 	}
 
 }

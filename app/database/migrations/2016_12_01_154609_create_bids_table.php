@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBidViewersTable extends Migration {
+class CreateBidsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,12 +12,15 @@ class CreateBidViewersTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('bid_viewers', function(Blueprint $table)
+		Schema::create('bids', function(Blueprint $table)
 		{
+			$table->increments('id');
 			$table->integer('user_id')->unsigned()->default(0);
-			$table->integer('bid_id')->unsigned()->default(0);
+			$table->integer('deal_id')->unsigned()->default(0);
 			$table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-			$table->foreign('bid_id')->references('id')->on('bids')->onDelete('cascade');			
+			$table->foreign('deal_id')->references('id')->on('deals')->onDelete('cascade');
+			$table->integer('price');
+			$table->boolean('accepted')->default(0);
 			$table->timestamps();
 		});
 	}
@@ -29,7 +32,7 @@ class CreateBidViewersTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('bid_viewers');
+		Schema::drop('bids');
 	}
 
 }

@@ -9,18 +9,9 @@ class News extends Eloquent implements UserInterface, RemindableInterface {
 
 	use UserTrait, RemindableTrait;
 
-	/**
-	 * The database table used by the model.
-	 *
-	 * @var string
-	 */
-	protected $table = 'news';	
 
-	/**
-	 * The attributes excluded from the model's JSON form.
-	 *
-	 * @var array
-	 */
+
+	protected $table = 'blogs';	
 	protected $fillable = array('pic_url', 'title', 'content', 'user_id');
 
 	public static $rules = array

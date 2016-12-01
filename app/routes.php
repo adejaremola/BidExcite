@@ -40,7 +40,7 @@ Route::put('deal/{deal}', array('as' => 'deal_edited', 'uses' => 'DealController
 
 //bid routes 
 Route::model('bid', 'Bid');
-//Route::get('bids/{id}', array('as' => 'bids', 'uses' => 'BidController@getBids'));
+Route::get('bids', array('as' => 'my_bids', 'uses' => 'BidController@getMyBids'));
 Route::get('bids/create/{id}', array('as' => 'create_bid', 'uses' => 'BidController@createBid'));
 Route::get('bids/{bid}/edit', array('as' => 'edit_bid', 'uses' => 'BidController@editBid'));
 Route::get('bids/{bid}/delete', array('as' => 'delete_bid', 'uses' => 'BidController@deleteBid'));
@@ -65,7 +65,7 @@ Route::post('profile/{id}', array('as' => 'profile_create', 'uses' => 'UserContr
 
 
 //notification routes
-Route::get('/notifications', array('as' => 'notifications', 'uses' => 'DealController@getNotifications'));
+Route::get('notifications', array('as' => 'notifs', 'uses' => 'NotificationController@getNotifications'));
 
 
 

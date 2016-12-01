@@ -52,8 +52,8 @@
                                             <th>Bid</th>
                                             <th>Time</th>
                                             @if(Auth::check() and !Auth::user()->cantBid($deal))
-                                            <th><a href="{{ url('bids/create/'.$deal->id) }}">
-                                            @else
+                                            <th><a href="{{ url('bids/create/'.$deal->id) }}">Place a bid</a></th>
+                                            @elseif(!Auth::check())
                                             <th><a data-toggle="modal" href="#signIn">Login </a>to place a bid</th>
                                             @endif
                                         </tr>
@@ -74,7 +74,7 @@
                                             @elseif(Auth::check() and Auth::user()->id == $bid->getDeal->getUser->id)
                                             <td>
                                             {{ Form::model($bid, ['method' => 'post', 'role' => 'form', 'url' => 'bid/'.$bid->id.'/accept']) }}
-                                            <button type="submit" class="btn {{$bid->accepted?'disabled':''}}">{{$bid->accepted?'Accepted':'Accept Bid'}}
+                                            <button type="submit" class="btn{{$bid->accepted?' disabled':''}}">{{$bid->accepted?'Accepted':'Accept Bid'}}
                                             </button>
                                             </td>
                                             {{ Form::close() }}

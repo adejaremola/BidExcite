@@ -13,7 +13,7 @@ class CreateProfilesTable extends Migration {
 	public function up()
 	{
 		Schema::create('profiles', function(Blueprint $table)
-		{
+		{	
 			$table->integer('user_id')->unsigned()->default(0);
 			$table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 			$table->string('city');

@@ -6,7 +6,7 @@ class BidController extends BaseController {
 
 	//get $ post requests for bids
 
-	public function getBids()
+	public function getMyBids()
 	{	
 		$deals = Deal::all();
 		$user = Auth::user();
