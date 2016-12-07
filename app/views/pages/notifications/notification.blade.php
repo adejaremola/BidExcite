@@ -2,19 +2,22 @@
 
 
 @section('content')
-<div class="section" style="min-height:400px;">
-    <div class="text-center">
+<section id="blog" class="container">
+    <div class="blog">
         <h2 class="text-center">Notifications</h2>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                @foreach($unreadNotifications as $notification)
+                <div class="media comment_section">
+                    <div class="media-body post_reply_comments">
+                        <h3>{{ $notification->subject }}</h3>
+                        <p>{{ $notification->body }}</p>
+                        <a href="#">Reply</a>
+                    </div>
+                </div> 
+                @endforeach
+            </div><!--/.col-md-8-->
+        </div><!--/.row-->
     </div>
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-            @foreach($unreadNotifications as $notification)
-            <div>    
-                <p class="subject">{{ $notification->subject }}</p>
-                <p class="body">{{ $notification->body }}</p>
-            </div>
-            @endforeach
-        </div>
-    </div>
-</div>
+</section><!--/#blog-->
 @stop

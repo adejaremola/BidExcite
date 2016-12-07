@@ -98,6 +98,15 @@ class BidController extends BaseController {
 			$bid->update();
 			$bid->getDeal->available = 0;
 			$bid->getDeal->update();
+
+			$user = $bid->getUser;
+			$user->newNotification()
+			    ->withType('BidAccepted')
+			    ->withSubject('Your bid has been accepted.')
+			    ->withBody('Your bid on '.$bid->getDeal.' has been accepted!')
+			    ->regarding($bid)
+			    ->deliver();
+			
 			return Redirect::back();
 		}
 

@@ -198,7 +198,7 @@
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-10 blog-content">
-                            <a href="#"><img class="img-responsive img-blog" src="{{ '/'.$first_blog->pic_url }}" width="100%" alt="" /></a>
+                            <a href="#"><img class="img-responsive img-blog" src="{{ $first_blog->pic_url }}" width="100%" alt="" /></a>
                             <h2><a href="{{ route('a_blog', $first_blog->id) }}">{{ $first_blog->title }}</a></h2>
                             <h3>{{ $first_blog->content }}</h3>
                             <a class="btn btn-primary readmore" href="{{ route('a_blog', $first_blog->id) }}">Read More <i class="fa fa-angle-right"></i></a>
@@ -211,7 +211,7 @@
 		                	@foreach($other_blogs as $a_blog)
 			                <div class="col-md-4 wow fadeInDown">
 			                    <div class="clients-comments text-center">
-			                        <img src="{{ '/'.$a_blog->pic_url }}" class="img-circle" alt="">
+			                        <img src="{{ $a_blog->pic_url }}" class="img-circle" alt="">
 			                        <h3>{{ $a_blog->title }}</h3>
 			                        <h4><span>-{{ $a_blog->getUser->first_name }} /</span>  {{ $a_blog->getUser->email }}</h4>
 			                    </div>

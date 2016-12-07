@@ -31,8 +31,15 @@ class CommentController extends BaseController {
 
 	    if($comment)
 	    {
+	    	$user = $comment->getNews->getUser;
+			$user->newNotification()
+			    ->withType('PostCommented')
+			    ->withSubject('Your post has recieved a comment.')
+			    ->withBody(Auth::user()->first_name.' has commented on your blog post!')
+			    ->regarding($comment)
+			    ->deliver();
 			return Redirect::route('a_news', array($comment->getNews->id))
-						->withErrors('Blog Post successfully created!');	    
+				->withErrors('Blog Post successfully created!');	    
 		}
 		else
 		{
