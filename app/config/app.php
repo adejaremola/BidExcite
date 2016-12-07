@@ -123,8 +123,7 @@ return array(
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 		'Way\Generators\GeneratorsServiceProvider',
 		'Intervention\Image\ImageServiceProvider',
-		'Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider',
-	    'Tashkar18\Notification\NotificationServiceProvider'
+		'Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider'
 	),
 
 	/*

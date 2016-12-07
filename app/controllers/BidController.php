@@ -2,17 +2,13 @@
 
 class BidController extends BaseController {
 
-	
-
 	//get $ post requests for bids
 
 	public function getMyBids()
 	{	
-		$deals = Deal::all();
-		$user = Auth::user();
-		return View::make('pages.bids.bidshome')
-			->with('deals', $deals)
-			->with('user', $user);
+		$bids = Auth::user()->hasBids;
+		return View::make('pages.bids.bid_history')
+				->with('bids', $bids);
 	}
 
 	public function createBid($id)
@@ -56,12 +52,19 @@ class BidController extends BaseController {
 		{
 			$bid = new Bid;
 			$bid->user_id = Auth::user()->id;
-			$bid->item_id = Input::get('item_id');
+			$bid->deal_id = Input::get('deal_id');
 			$bid->price = Input::get('price');
 			$bid->save();
 		}
 		if($bid)
-		{
+		{	
+			$user = $bid->getDeal->getUser;
+			$user->newNotification()
+			    ->withType('DealBidded')
+			    ->withSubject('Your deal has recieved a bid.')
+			    ->withBody(Auth::user()->first_name.' has placed a bid on your listed deal!')
+			    ->regarding($bid)
+			    ->deliver();
 			return Redirect::to('deals');
 		}
 	}

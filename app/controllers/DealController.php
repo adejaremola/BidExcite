@@ -51,8 +51,10 @@ class DealController extends \BaseController {
 
 	public function getDeal(Deal $deal)
 	{
+		$a_bid = Bid::where('deal_id', '=', $deal->id)->where('user_id', '=', Auth::user()->id)->first();
 		return View::make('pages.deals.deal')
-			->with('deal', $deal);
+				->with('deal', $deal)
+				->with('a_bid', $a_bid);
 	}
 	
 	

@@ -8,8 +8,7 @@
 		"intervention/image": "dev-master",
 		"rap2hpoutre/laravel-log-viewer": "^0.7.0",
 		"fzaninotto/faker": "1.5.*@dev",
-       "gloudemans/shoppingcart": "~1.2",
-		"tashkar18/notification": "~0.2"
+       "gloudemans/shoppingcart": "~1.2"
 	},
 	"require-dev": {
 		"way/generators": "~2.0"

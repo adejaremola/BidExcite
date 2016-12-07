@@ -7,9 +7,12 @@ class NotificationController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function getNotifications($id)
+	public function getNotifications()
 	{
-		
+		$user = Auth::user();
+		$unreadNotifications = $user->hasNotifications()->unread()->get();
+		return View::make('pages.notifications.notification')
+					->with('unreadNotifications', $unreadNotifications);
 	}
 
 
@@ -20,7 +23,7 @@ class NotificationController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+		
 	}
 
 

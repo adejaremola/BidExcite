@@ -22,7 +22,7 @@
             {{ Form::number('price') }}
           </div>
           <div class="form-group">
-            <input type="number" class="form-control sr-only" name="item_id" value="{{ $deal->id }}">
+            <input type="number" class="form-control sr-only" name="deal_id" value="{{ $deal->id }}">
           </div>
           <div class="form-group">
             @if($method == 'post')

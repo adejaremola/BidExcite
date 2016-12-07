@@ -31,7 +31,7 @@
 
                         <div class="col-sm-6 hidden-xs animation animated-item-4">
                             <div class="slider-img">
-                                <img src="images/slider/img1.png" class="img-responsive">
+                                <img src="{{ $deal->pic_url }}" class="img-responsive">
                             </div>
                         </div>
 
@@ -52,7 +52,7 @@
 
                         <div class="col-sm-6 hidden-xs animation animated-item-4">
                             <div class="slider-img">
-                                <img src="images/slider/img1.png" class="img-responsive">
+                                <img src="{{ $deal->pic_url }}" class="img-responsive">
                             </div>
                         </div>
 
@@ -81,53 +81,15 @@
 
         <div class="row">
             <div class="features">
+            @foreach($blogs as $blog)
                 <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
                     <div class="feature-wrap">
-                        <i class="fa fa-bullhorn"></i>
-                        <h2>Fresh and Clean</h2>
-                        <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit</h3>
+                        <img src="{{ $blog->pic_url }}" class="img-responsive">
+                        <h2><a href="{{ route('deal', $deal->id) }}">{{ $blog->title }}</a></h2>
+                        <p>{{ $blog->content }}</p>
                     </div>
                 </div><!--/.col-md-4-->
-
-                <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
-                    <div class="feature-wrap">
-                        <i class="fa fa-comments"></i>
-                        <h2>Retina ready</h2>
-                        <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit</h3>
-                    </div>
-                </div><!--/.col-md-4-->
-
-                <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
-                    <div class="feature-wrap">
-                        <i class="fa fa-cloud-download"></i>
-                        <h2>Easy to customize</h2>
-                        <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit</h3>
-                    </div>
-                </div><!--/.col-md-4-->
-            
-                <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
-                    <div class="feature-wrap">
-                        <i class="fa fa-leaf"></i>
-                        <h2>Adipisicing elit</h2>
-                        <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit</h3>
-                    </div>
-                </div><!--/.col-md-4-->
-
-                <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
-                    <div class="feature-wrap">
-                        <i class="fa fa-cogs"></i>
-                        <h2>Sed do eiusmod</h2>
-                        <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit</h3>
-                    </div>
-                </div><!--/.col-md-4-->
-
-                <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
-                    <div class="feature-wrap">
-                        <i class="fa fa-heart"></i>
-                        <h2>Labore et dolore</h2>
-                        <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit</h3>
-                    </div>
-                </div><!--/.col-md-4-->
+            @endforeach
             </div><!--/.services-->
         </div><!--/.row-->    
     </div><!--/.container-->

@@ -3,7 +3,7 @@
 
 @section('content')
 
-<div class="section">
+<div class="section" style="min-height:380px; max-width:100%;">
     <h2 class="text-center">{{ $deal->title }}</h2>
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
@@ -20,10 +20,10 @@
                         </div>
 
                         <div id="collapseOne1" class="panel-collapse collapse in">
-                            <div class="panel-body">
-                                <div class="media accordion-inner">
+                            <div class="panel-body" >
+                                <div class="media accordion-inner" style="max-height:250px">
                                     <div class="pull-left">
-                                        <img class="img-responsive" src="{{ '/'.$deal->pic_url }}">
+                                        <img class="img-responsive" src="{{ $deal->pic_url }}">
                                     </div>
                                     <div class="media-body">
                                         <p>{{ $deal->description }}</p>
@@ -55,6 +55,9 @@
                                             <th><a href="{{ url('bids/create/'.$deal->id) }}">Place a bid</a></th>
                                             @elseif(!Auth::check())
                                             <th><a data-toggle="modal" href="#signIn">Login </a>to place a bid</th>
+                                            @else
+                                            <th><a href=""></a></th>
+                                            <th><a href=""></a></th>
                                             @endif
                                         </tr>
                                     </thead>

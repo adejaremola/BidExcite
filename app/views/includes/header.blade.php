@@ -60,7 +60,7 @@
                     <a href="" class="dropdown-toggle" data-toggle="dropdown">{{Auth::user()->first_name}}<i class="fa fa-angle-down"></i></a>
                     <ul class="dropdown-menu">
                         <li><a href="{{ route('create_profile', Auth::user()->id) }}">Profile</a></li>
-                        <li><a href="{{ route('notifs') }}">Notifications</a></li>
+                        <li><a href="{{ route('notifs') }}">Notifications <span class="badge">{{Auth::user()->hasNotifications()->unread()->count()}}</span></a></li>
                         <li><a href="{{ route('my_bids') }}">Bid History</a></li>
                         <li><a data-toggle="modal" href="#logOut">Log Out</a>
                         </li>

@@ -8,7 +8,8 @@ public function getIndex()
 					->orderBy('id')
 					->get();
 		$blogs = Blog::take(6)
-					->orderBy('updated_at', 'desc');
+					->orderBy('updated_at', 'desc')
+					->get();
 		return View::make('pages.index')
 					->with('deals', $deals)
 					->with('blogs', $blogs);

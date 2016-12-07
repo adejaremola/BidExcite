@@ -7,7 +7,7 @@ use Illuminate\Auth\Reminders\RemindableInterface;
 
 class User extends Eloquent implements UserInterface, RemindableInterface {
 
-	use UserTrait, RemindableTrait;
+	use UserTrait, RemindableTrait ;
 
 	/**
 	 * The database table used by the model.
@@ -34,8 +34,14 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	
 	public function cantBid(Deal $deal)
 	{
-		$bid = Bid::where('item_id', '=', $deal->id)->where('user_id', '=', $this->id)->get();
-		return $bid;
+		$bid = Bid::where('deal_id', '=', $deal->id)->where('user_id', '=', $this->id)->first();
+
+		return $bid or $this->owns($deal);
+	}
+
+	public function owns(Deal $deal)
+	{
+		return $this->id == $deal->user_id;
 	}
  
 	//relationship with Profile model
@@ -63,5 +69,19 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	{
 		return $this->hasMany('Bid', 'user_id');
 	}
-	
+
+	// In your User model - 1 User has Many Notifications
+	public function hasNotifications()
+	{
+	    return $this->hasMany('Notification');
+	}
+
+	//create a new instance of notification model
+	public function newNotification()
+	{
+	    $notification = new Notification;
+	    $notification->user()->associate($this);
+	 
+	    return $notification;
+	}
 }

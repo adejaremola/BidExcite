@@ -17,7 +17,8 @@
                 @if($for == "my_deals")
                     @foreach($deals as $deal)
                         <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
-                            <div class="feature-wrap" style="background-image: url({{ '/'.$deal->pic_url }})">
+                            <div class="feature-wrap" >
+                                <img src="{{ $deal->pic_url }}" class="img-responsive">
                                 <h2>{{ $deal->title }}</h2>
                                 <h3><p>{{ $deal->description }}</p></h3>
                                 <h3><p>{{ $deal->price }}</p></h3>
@@ -31,7 +32,8 @@
                     @foreach($deals as $deal)
                         @if(!Auth::check() or $deal->user_id != Auth::user()->id)
                         <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
-                            <div class="feature-wrap" style="background-image: url({{ '/'.$deal->pic_url }})">
+                            <div class="feature-wrap">
+                                <img src="{{ $deal->pic_url }}" class="img-responsive">
                                 <h2>{{ $deal->title }}</h2>
                                 <h3>{{ $deal->description }}</h3>
                                 <h3><p>{{ $deal->price }}</p></h3>
