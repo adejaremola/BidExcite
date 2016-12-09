@@ -103,7 +103,7 @@ class BidController extends BaseController {
 			$user->newNotification()
 			    ->withType('BidAccepted')
 			    ->withSubject('Your bid has been accepted.')
-			    ->withBody('Your bid on '.$bid->getDeal.' has been accepted!')
+			    ->withBody('Your bid on '.$bid->getDeal->title.' has been accepted!')
 			    ->regarding($bid)
 			    ->deliver();
 			
